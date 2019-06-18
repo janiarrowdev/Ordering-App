@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hibernateorder.PurchaseOrder" table="PURCHASEORDER">
+        <id column="ORDERID" name="orderId">
+            <generator class="increment"/>
+        </id>
+        <property column="SUPPLIERNAME" name="supplierName"/>
+        <property column="DUEDATE" name="duedate"/>
+        <set cascade="all" name="parts" table="PURCHASEORDERLINE">
+            <key column="ORDERID"/>
+            <one-to-many class="hibernateorder.PurchaseOrderLine"/>
+        </set>
+    </class>
+</hibernate-mapping>
